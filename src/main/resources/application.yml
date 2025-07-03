@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:process
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+    hikari:
+      maximum-pool-size: 5
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+camunda.bpm:
+  admin-user:
+    id: teja
+    password: teja
+    firstName: teja
+  filter:
+    create: All tasks
+  webapp:
+    enabled=true:
+
+  default-number-of-retries: 3
+  history-level: full
+  enforce-history-time-to-live: true
+  default-history-time-to-live: 180
+

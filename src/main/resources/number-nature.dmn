@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_1misd8y" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.36.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <decision id="Decision_0cyszc2" name="number-nature" camunda:historyTimeToLive="180">
+    <decisionTable id="DecisionTable_1jmahc3">
+      <input id="Input_1" camunda:inputVariable="input1">
+        <inputExpression id="InputExpression_1" typeRef="integer" expressionLanguage="juel">
+          <text>Input</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="nature" typeRef="string" />
+      <rule id="DecisionRule_0m9svqk">
+        <inputEntry id="UnaryTests_01d7bmn">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0iecw9c">
+          <text>"Zero"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04g0c51">
+        <inputEntry id="UnaryTests_1xiwhg6">
+          <text>&lt; 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_144xy56">
+          <text>"Negetive"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jjr3m4">
+        <inputEntry id="UnaryTests_0oij1gf">
+          <text>&gt; 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gw1a3v">
+          <text>"Positive"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_0cyszc2">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

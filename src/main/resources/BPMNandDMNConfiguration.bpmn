@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_15xfp9y" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.36.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_10jedpu" name="BPMNandDMNConfiguration" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1xs6x0f</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1xs6x0f" sourceRef="StartEvent_1" targetRef="Activity_1okzb1t" />
+    <bpmn:sequenceFlow id="Flow_0otbzi4" sourceRef="Activity_1okzb1t" targetRef="Activity_0abbuyy" />
+    <bpmn:endEvent id="Event_00oej9c">
+      <bpmn:incoming>Flow_0haz3c9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0tj83fh" sourceRef="Activity_0abbuyy" targetRef="Activity_170iw93" />
+    <bpmn:userTask id="Activity_1okzb1t" name="Input from user">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="input" label="InputNumber" type="long" defaultValue="0" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1xs6x0f</bpmn:incoming>
+      <bpmn:outgoing>Flow_0otbzi4</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0haz3c9" sourceRef="Activity_170iw93" targetRef="Event_00oej9c" />
+    <bpmn:businessRuleTask id="Activity_0abbuyy" name="Check the condition" camunda:resultVariable="nature" camunda:decisionRef="Decision_1ms7arb" camunda:mapDecisionResult="singleEntry">
+      <bpmn:incoming>Flow_0otbzi4</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tj83fh</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:userTask id="Activity_170iw93" name="Update the output">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="OutputDetails" label="OutputDetails" type="string" defaultValue="${nature}" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0tj83fh</bpmn:incoming>
+      <bpmn:outgoing>Flow_0haz3c9</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_10jedpu">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="182" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_00oej9c_di" bpmnElement="Event_00oej9c">
+        <dc:Bounds x="762" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hi6ljk_di" bpmnElement="Activity_1okzb1t">
+        <dc:Bounds x="270" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18i184r_di" bpmnElement="Activity_0abbuyy">
+        <dc:Bounds x="430" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15noqna_di" bpmnElement="Activity_170iw93">
+        <dc:Bounds x="590" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1xs6x0f_di" bpmnElement="Flow_1xs6x0f">
+        <di:waypoint x="218" y="120" />
+        <di:waypoint x="270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0otbzi4_di" bpmnElement="Flow_0otbzi4">
+        <di:waypoint x="370" y="120" />
+        <di:waypoint x="430" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tj83fh_di" bpmnElement="Flow_0tj83fh">
+        <di:waypoint x="530" y="120" />
+        <di:waypoint x="590" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0haz3c9_di" bpmnElement="Flow_0haz3c9">
+        <di:waypoint x="690" y="120" />
+        <di:waypoint x="762" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
